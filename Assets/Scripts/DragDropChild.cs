@@ -17,6 +17,7 @@ public class DragDropChild : MonoBehaviour
 
     void Start()
     {
+        _hingeJoint.connectedBody = GameObject.Find("hand").GetComponent<Rigidbody2D>();
         _camera = Camera.main;
         _cameraMovement = _camera.GetComponent<CameraMovement>();
         _hingeJoint.enabled = false;
