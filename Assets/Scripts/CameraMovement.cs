@@ -44,5 +44,32 @@ public class CameraMovement : MonoBehaviour
             }
         }
     }
+     public enum DirectionMovement
+    {
+        Up,
+        Down,
+        Left,
+        Right
+    }
+    public void MoveCameraWhenDragChild(DirectionMovement directionMovement, float speed)
+    {
+        switch (directionMovement)
+        {
+            case DirectionMovement.Up:
+                _rigidbody2D.velocity += Vector2.up * speed;
+                break;
+            case DirectionMovement.Down:
+                _rigidbody2D.velocity += Vector2.down * speed;
+                break;
+            case DirectionMovement.Left:
+                _rigidbody2D.velocity += Vector2.left * speed;
+                break;
+            case DirectionMovement.Right:
+                _rigidbody2D.velocity += Vector2.right * speed;
+                break;
+
+        }
+
+    }
     
 }
