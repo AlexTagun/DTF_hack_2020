@@ -13,6 +13,7 @@ public class Stairs : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other) {
         if(_isRunning) return;
+        if(other.GetComponent<DragDropChild>().IsDraging) return;
         var randValue = Random.value;
         if(_chance <= randValue) return;
         if (other.gameObject.tag == "Child") {
