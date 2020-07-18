@@ -11,9 +11,10 @@ public class DragDropChild : MonoBehaviour
     private Camera _camera = null;
     private CameraMovement _cameraMovement;
     private bool _isMouseDown = false;
-    private Vector2 CurPosition => new Vector2(transform.position.x, transform.position.y);
-    private Vector2 MousePosition => GetMousePosition();
-    private Vector2 _mouseDelta;
+    //private Vector2 CurPosition => new Vector2(transform.position.x, transform.position.y);
+    //private Vector2 MousePosition => GetMousePosition();
+    private bool isDraging = false;
+    public bool IsDraging => isDraging;
 
     void Start()
     {
@@ -33,13 +34,14 @@ public class DragDropChild : MonoBehaviour
     private void OnMouseDown()
     {
         _isMouseDown = true;
+        isDraging = true;
         _hingeJoint.enabled = true;
-        _mouseDelta = CurPosition - MousePosition;
     }
 
     private void OnMouseUp()
     {
         _isMouseDown = false;
+        isDraging = false;
         _hingeJoint.enabled = false;
     }
 
