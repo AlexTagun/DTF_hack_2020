@@ -37,5 +37,8 @@ public class ChildMoveComponent : MonoBehaviour {
         var curPos = new Vector2(transform.position.x, transform.position.y);
         curPos.x += speed * Time.deltaTime * (_state == MoveState.Left ? -1 : 1);
         _rigidbody.MovePosition(curPos);
+        var curVelocity = _rigidbody.velocity;
+        curVelocity.x = speed * (_state == MoveState.Left ? -1 : 1);
+        _rigidbody.velocity = curVelocity;
     }
 }
