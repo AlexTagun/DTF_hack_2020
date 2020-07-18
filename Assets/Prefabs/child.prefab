@@ -168,10 +168,11 @@ GameObject:
   - component: {fileID: 5487452739450722667}
   - component: {fileID: 5487452739450722665}
   - component: {fileID: 5487452739450722664}
+  - component: {fileID: 8761895476963138532}
   - component: {fileID: 5487452739450722666}
   m_Layer: 0
   m_Name: child
-  m_TagString: Untagged
+  m_TagString: Child
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -252,6 +253,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hingeJoint: {fileID: 5487452739450722666}
+  _rigidbody: {fileID: 5487452739450722667}
+--- !u!114 &8761895476963138532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5487452739450722671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a13721f0ca0e3a54a8d0d4582399355c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.08
   _rigidbody: {fileID: 5487452739450722667}
 --- !u!233 &5487452739450722666
 HingeJoint2D:
