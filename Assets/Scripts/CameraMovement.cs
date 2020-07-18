@@ -31,7 +31,6 @@ public class CameraMovement : MonoBehaviour
                     canMove = false;
                 }
             }
-            Debug.Log(canMove);
         }
        if (Input.GetMouseButton(0))
         {
