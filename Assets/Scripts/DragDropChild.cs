@@ -36,6 +36,7 @@ public class DragDropChild : MonoBehaviour
         _isMouseDown = true;
         isDraging = true;
         _hingeJoint.enabled = true;
+        gameObject.layer = 11;
     }
 
     private void OnMouseUp()
@@ -43,6 +44,7 @@ public class DragDropChild : MonoBehaviour
         _isMouseDown = false;
         isDraging = false;
         _hingeJoint.enabled = false;
+        gameObject.layer = 0;
     }
 
     // Update is called once per frame
@@ -71,7 +73,7 @@ public class DragDropChild : MonoBehaviour
                 float speed = (coordinateChildOnScreen.y - 0.8f) / 0.2f;
                 _cameraMovement.MoveCameraWhenDragChild(CameraMovement.DirectionMovement.Up, speed);
             }
-
+            
         }
     }
 
