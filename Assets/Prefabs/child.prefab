@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4017391510291819748
 Transform:
   m_ObjectHideFlags: 0
@@ -852,6 +852,7 @@ MonoBehaviour:
   HaveCakeSpot: 0
   _timeEatingCake: 5
   "_birthday\u0421ake": {fileID: 0}
+  _creamSpot: {fileID: 82564344156481341}
 --- !u!233 &5487452739450722666
 HingeJoint2D:
   m_ObjectHideFlags: 0

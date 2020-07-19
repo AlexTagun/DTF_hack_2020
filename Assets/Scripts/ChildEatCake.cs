@@ -9,10 +9,12 @@ public class ChildEatCake : MonoBehaviour
     public bool HaveCakeSpot = false;
     [SerializeField] private float _timeEatingCake = 5f;
     [SerializeField] private BirthdayСake _birthdayСake = null;
+    [SerializeField] private GameObject _creamSpot = null;
     private float _curTimeEatingCake = 0f;
     // Start is called before the first frame update
     void Start()
     {
+        _creamSpot.SetActive(false);
         _birthdayСake = GameObject.Find("birthdayСake").GetComponent<BirthdayСake>();
     }
 
@@ -49,6 +51,8 @@ public class ChildEatCake : MonoBehaviour
                 _birthdayСake.AmountPieceCake--;
                 _birthdayСake.IsFreeToEat = true;
                 GetComponent<ChildAI>().pauseAI = false;
+                _creamSpot.SetActive(true);
+                _birthdayСake.ChangeSprite();
 
             }
             else

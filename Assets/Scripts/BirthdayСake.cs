@@ -6,9 +6,14 @@ public class BirthdayСake : MonoBehaviour
 {
     public int AmountPieceCake = 5;
     public bool IsFreeToEat = true;
+    [SerializeField] private SpriteRenderer _spriteRenderer = null;
+    [SerializeField] private Sprite[] _spritesCake;
+    private int _maxAmountPieceCake = 5;
     // Start is called before the first frame update
     void Start()
     {
+        _maxAmountPieceCake = AmountPieceCake;
+        ChangeSprite();
     }
 
     // Update is called once per frame
@@ -30,7 +35,10 @@ public class BirthdayСake : MonoBehaviour
             collision.GetComponent<ChildAI>().pauseAI = true;
             Debug.Log(collision.GetComponent<ChildAI>().pauseAI);
         }
+    }
 
-
+    public void ChangeSprite ()
+    {
+        _spriteRenderer.sprite = _spritesCake[_maxAmountPieceCake - AmountPieceCake];
     }
 }

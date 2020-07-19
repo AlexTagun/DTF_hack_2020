@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zoomLerpSpeed: 10
-  maxZoom: 8
+  maxZoom: 10
   minZoom: 4.5
 --- !u!50 &5052858289128837184
 Rigidbody2D:
