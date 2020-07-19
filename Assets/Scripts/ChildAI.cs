@@ -58,7 +58,7 @@ public class ChildAI : MonoBehaviour
     private IEnumerator movingCoroutine = null;
 
     private IEnumerator executeMovingScheduleCoroutine(List<MovingScheduleElement> inSchedule, System.Action inOnEndCallback) {
-        float theMinimumDistance = 1f;
+        float theMinimumDistance = 2f;
 
         List<MovingScheduleElement> theSchedule = new List<MovingScheduleElement>(inSchedule);
 
@@ -109,18 +109,6 @@ public class ChildAI : MonoBehaviour
 
         if (null != inOnEndCallback)
             inOnEndCallback();
-    }
-
-    bool theButtonWasPressed = false;
-    private void FixedUpdate() {
-        if (Input.GetMouseButton(0)) {
-            if (!theButtonWasPressed) {
-                theButtonWasPressed = true;
-                moveToPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-            }
-        } else {
-            theButtonWasPressed = false;
-        }
     }
 
     public enum MovingDirection { Left, Right }
@@ -197,4 +185,16 @@ public class ChildAI : MonoBehaviour
 
     private ChildMoveComponent movementComponent => GetComponent<ChildMoveComponent>();
 
+
+    //bool theButtonWasPressed = false;
+    //private void FixedUpdate() {
+    //    if (Input.GetMouseButton(0)) {
+    //        if (!theButtonWasPressed) {
+    //            theButtonWasPressed = true;
+    //            moveToPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+    //        }
+    //    } else {
+    //        theButtonWasPressed = false;
+    //    }
+    //}
 }
