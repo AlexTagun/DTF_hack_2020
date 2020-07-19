@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5487452738784761790}
   - component: {fileID: 5487452738784761784}
   - component: {fileID: 5487452738784761785}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 5487452738961245509}
   - component: {fileID: 5487452738961245511}
   - component: {fileID: 5487452738961245508}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,7 +171,7 @@ GameObject:
   - component: {fileID: 8761895476963138532}
   - component: {fileID: 8266361141961901029}
   - component: {fileID: 5487452739450722666}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: child
   m_TagString: Child
   m_Icon: {fileID: 0}
@@ -284,7 +284,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsEatingCake: 0
   CanEatCake: 1
-  haveCakeSpot: 0
+  HaveCakeSpot: 0
   _timeEatingCake: 5
   "_birthday\u0421ake": {fileID: 0}
 --- !u!233 &5487452739450722666

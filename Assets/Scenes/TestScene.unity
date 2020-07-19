@@ -127,6 +127,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5487452739450722665, guid: 32fd95bd216c4804fb3f75ff6cf315cc,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5487452739450722666, guid: 32fd95bd216c4804fb3f75ff6cf315cc,
         type: 3}
       propertyPath: m_ConnectedRigidBody
@@ -837,6 +842,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5487452739450722665, guid: 32fd95bd216c4804fb3f75ff6cf315cc,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5487452739450722666, guid: 32fd95bd216c4804fb3f75ff6cf315cc,
         type: 3}
       propertyPath: m_ConnectedRigidBody

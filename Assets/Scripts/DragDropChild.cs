@@ -48,7 +48,7 @@ public class DragDropChild : MonoBehaviour
         _isMouseDown = false;
         isDraging = false;
         _hingeJoint.enabled = false;
-        gameObject.layer = 0;
+        gameObject.layer = 9;
     }
 
     // Update is called once per frame
