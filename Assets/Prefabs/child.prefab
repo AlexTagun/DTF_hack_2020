@@ -270,6 +270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   _rigidbody: {fileID: 5487452739450722667}
+  _collider: {fileID: 5487452739450722665}
 --- !u!114 &8266361141961901029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,7 +285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsEatingCake: 0
   CanEatCake: 1
-  haveCakeSpot: 0
+  HaveCakeSpot: 0
   _timeEatingCake: 5
   "_birthday\u0421ake": {fileID: 0}
 --- !u!233 &5487452739450722666
