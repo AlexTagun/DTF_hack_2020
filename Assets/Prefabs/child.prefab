@@ -270,6 +270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   _rigidbody: {fileID: 5487452739450722667}
+  _collider: {fileID: 5487452739450722665}
 --- !u!114 &8266361141961901029
 MonoBehaviour:
   m_ObjectHideFlags: 0
