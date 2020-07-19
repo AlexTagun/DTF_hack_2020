@@ -15,6 +15,8 @@ public class ChildMoveComponent : MonoBehaviour {
     public Stairs stairsThatMayBeUsed => _stairsThatMayBeUsed;
     public Stairs usingStairs => _usingStairs;
 
+    public bool isGrounded => Physics2D.Raycast(transform.position - Vector3.up * 0.7f, Vector2.down, 0.01f).collider != null;
+
     private void doMove(bool inMoveRight) {
         float theSpeedPerFrame = speed * Time.fixedDeltaTime;
         transform.localScale = new Vector3(inMoveRight ? -1f : 1f, 1,1);
@@ -25,10 +27,11 @@ public class ChildMoveComponent : MonoBehaviour {
             Vector2 theCurrentPosition = transform.position;
             theCurrentPosition.x += theMovingSpeed;
 
-            _rigidbody.MovePosition(theCurrentPosition);
+            if(isGrounded) _rigidbody.velocity = new Vector2(theMovingSpeed, _rigidbody.velocity.y);
         } else {
+            _rigidbody.velocity = Vector2.zero;
             float theTotalStairsDistance = _usingStairs.stairsVectorToPass.magnitude;
-            float theStairsProgressChangeValue = theSpeedPerFrame / theTotalStairsDistance;
+            float theStairsProgressChangeValue = theSpeedPerFrame / theTotalStairsDistance / 50;
             float theStairsProgressChangeSign = (inMoveRight == _usingStairs.isRightOriented) ? 1f : -1f;
             float theStairsProgressChange = theStairsProgressChangeValue * theStairsProgressChangeSign;
             _stairsMovingProgress = Mathf.Clamp01(_stairsMovingProgress + theStairsProgressChange);
