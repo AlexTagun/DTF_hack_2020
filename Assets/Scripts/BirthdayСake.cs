@@ -29,6 +29,8 @@ public class BirthdayСake : MonoBehaviour
         if (collision.tag != "Child") return;
         if (collision.GetComponent<DragDropChild>().IsDraging) return;
         if (collision.GetComponent<ChildEatCake>().HaveCakeSpot) return;
+        collision.GetComponent<DragDropChild>().BirthdayСake = this;
+        collision.GetComponent<ChildEatCake>().BirthdayСake = this;
         if (collision.GetComponent<ChildEatCake>().CanEatCake)
         {
             collision.GetComponent<ChildEatCake>().EatCake();

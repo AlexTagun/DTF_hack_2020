@@ -11,7 +11,7 @@ public class DragDropChild : MonoBehaviour
     //[SerializeField] private Rigidbody2D _rigidbody;
     [SerializeField] private ChildAI _childAI = null;
     [SerializeField] private ChildEatCake _childEatCake = null;
-    [SerializeField] private BirthdayСake _birthdayСake = null;
+    public BirthdayСake BirthdayСake = null;
     private Camera _camera = null;
     private CameraMovement _cameraMovement;
     private bool _isMouseDown = false;
@@ -23,7 +23,7 @@ public class DragDropChild : MonoBehaviour
     void Start()
     {
         _hingeJoint.connectedBody = GameObject.Find("hand").GetComponent<Rigidbody2D>();
-        _birthdayСake = GameObject.Find("birthdayСake").GetComponent<BirthdayСake>();
+        BirthdayСake = GameObject.Find("birthdayСake").GetComponent<BirthdayСake>();
         _camera = Camera.main;
         _cameraMovement = _camera.GetComponent<CameraMovement>();
         _hingeJoint.enabled = false;
@@ -105,7 +105,7 @@ public class DragDropChild : MonoBehaviour
         if (_childEatCake.IsEatingCake)
         {
             _childEatCake.StopEatingCake();
-            _birthdayСake.IsFreeToEat = true;
+            BirthdayСake.IsFreeToEat = true;
             _childAI.pauseAI = false;
         }
     }

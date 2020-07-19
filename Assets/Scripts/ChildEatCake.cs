@@ -8,7 +8,7 @@ public class ChildEatCake : MonoBehaviour
     public bool CanEatCake = true;
     public bool HaveCakeSpot = false;
     [SerializeField] private float _timeEatingCake = 5f;
-    [SerializeField] private BirthdayСake _birthdayСake = null;
+    public BirthdayСake BirthdayСake = null;
     [SerializeField] private GameObject _creamSpot = null;
     [SerializeField] private ChildPlayerAnimation _childPlayerAnimation = null;
     [SerializeField] private AudioSource _audioSource = null;
@@ -17,7 +17,7 @@ public class ChildEatCake : MonoBehaviour
     void Start()
     {
         _creamSpot.SetActive(false);
-        _birthdayСake = GameObject.Find("birthdayСake").GetComponent<BirthdayСake>();
+        BirthdayСake = GameObject.Find("birthdayСake").GetComponent<BirthdayСake>();
     }
 
     void Update()
@@ -28,7 +28,7 @@ public class ChildEatCake : MonoBehaviour
     public void EatCake()
     {
         IsEatingCake = true;
-        _birthdayСake.IsFreeToEat = false;
+        BirthdayСake.IsFreeToEat = false;
         _childPlayerAnimation.PlayAnimEat();
         _audioSource.Play();
         //Debug.Log("Хрум-хрум");
@@ -38,7 +38,7 @@ public class ChildEatCake : MonoBehaviour
     {
         IsEatingCake = false;
         CanEatCake = true;
-        _birthdayСake.IsFreeToEat = true;
+        BirthdayСake.IsFreeToEat = true;
         _curTimeEatingCake = 0f;
         _audioSource.Stop();
     }
@@ -52,11 +52,11 @@ public class ChildEatCake : MonoBehaviour
                 IsEatingCake = false;
                 HaveCakeSpot = true;
                 //Debug.Log("Кусок съеден");
-                _birthdayСake.AmountPieceCake--;
-                _birthdayСake.IsFreeToEat = true;
+                BirthdayСake.AmountPieceCake--;
+                BirthdayСake.IsFreeToEat = true;
                 GetComponent<ChildAI>().pauseAI = false;
                 _creamSpot.SetActive(true);
-                _birthdayСake.ChangeSprite();
+                BirthdayСake.ChangeSprite();
                 _childPlayerAnimation.PlayAnimIdle();
                 _audioSource.Stop();
             }
