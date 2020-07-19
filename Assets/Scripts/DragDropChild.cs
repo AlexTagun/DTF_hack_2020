@@ -7,7 +7,9 @@ using UnityEngine.EventSystems;
 public class DragDropChild : MonoBehaviour
 {
     [SerializeField] private HingeJoint2D _hingeJoint;
-    [SerializeField] private Rigidbody2D _rigidbody;
+    //[SerializeField] private Rigidbody2D _rigidbody;
+    [SerializeField] private ChildEatCake _childEatCake = null;
+    [SerializeField] private BirthdayСake _birthdayСake = null;
     private Camera _camera = null;
     private CameraMovement _cameraMovement;
     private bool _isMouseDown = false;
@@ -19,6 +21,7 @@ public class DragDropChild : MonoBehaviour
     void Start()
     {
         _hingeJoint.connectedBody = GameObject.Find("hand").GetComponent<Rigidbody2D>();
+        _birthdayСake = GameObject.Find("birthdayСake").GetComponent<BirthdayСake>();
         _camera = Camera.main;
         _cameraMovement = _camera.GetComponent<CameraMovement>();
         _hingeJoint.enabled = false;
@@ -37,6 +40,7 @@ public class DragDropChild : MonoBehaviour
         isDraging = true;
         _hingeJoint.enabled = true;
         gameObject.layer = 11;
+        StopEatingCake();
     }
 
     private void OnMouseUp()
@@ -49,6 +53,11 @@ public class DragDropChild : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        CheckNearScreenBoundaries();
+    }
+
+    private void CheckNearScreenBoundaries()
     {
         if (_isMouseDown)
         {
@@ -73,7 +82,16 @@ public class DragDropChild : MonoBehaviour
                 float speed = (coordinateChildOnScreen.y - 0.8f) / 0.2f;
                 _cameraMovement.MoveCameraWhenDragChild(CameraMovement.DirectionMovement.Up, speed);
             }
-            
+
+        }
+    }
+
+    private void StopEatingCake()
+    {
+        if (_childEatCake.IsEatingCake)
+        {
+            _childEatCake.StopEatingCake();
+            _birthdayСake.IsFreeToEat = true;
         }
     }
 
