@@ -6,7 +6,7 @@ public class ChildEatCake : MonoBehaviour
 {
     public bool IsEatingCake = false;
     public bool CanEatCake = true;
-    public bool haveCakeSpot = false;
+    public bool HaveCakeSpot = false;
     [SerializeField] private float _timeEatingCake = 5f;
     [SerializeField] private BirthdayСake _birthdayСake = null;
     private float _curTimeEatingCake = 0f;
@@ -44,7 +44,7 @@ public class ChildEatCake : MonoBehaviour
             if(_curTimeEatingCake>=_timeEatingCake)
             {
                 IsEatingCake = false;
-                haveCakeSpot = true;
+                HaveCakeSpot = true;
                 Debug.Log("Кусок съеден");
                 _birthdayСake.AmountPieceCake--;
                 _birthdayСake.IsFreeToEat = true;
