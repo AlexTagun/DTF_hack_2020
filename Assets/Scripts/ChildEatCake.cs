@@ -11,6 +11,7 @@ public class ChildEatCake : MonoBehaviour
     [SerializeField] private BirthdayСake _birthdayСake = null;
     [SerializeField] private GameObject _creamSpot = null;
     [SerializeField] private ChildPlayerAnimation _childPlayerAnimation = null;
+    [SerializeField] private AudioSource _audioSource = null;
     private float _curTimeEatingCake = 0f;
 
     void Start()
@@ -29,6 +30,7 @@ public class ChildEatCake : MonoBehaviour
         IsEatingCake = true;
         _birthdayСake.IsFreeToEat = false;
         _childPlayerAnimation.PlayAnimEat();
+        _audioSource.Play();
         //Debug.Log("Хрум-хрум");
     }
 
@@ -38,6 +40,7 @@ public class ChildEatCake : MonoBehaviour
         CanEatCake = true;
         _birthdayСake.IsFreeToEat = true;
         _curTimeEatingCake = 0f;
+        _audioSource.Stop();
     }
 
     private void UpdateEatingCake()
@@ -55,6 +58,7 @@ public class ChildEatCake : MonoBehaviour
                 _creamSpot.SetActive(true);
                 _birthdayСake.ChangeSprite();
                 _childPlayerAnimation.PlayAnimIdle();
+                _audioSource.Stop();
             }
             else
             {
