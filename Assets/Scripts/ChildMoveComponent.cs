@@ -24,6 +24,7 @@ public class ChildMoveComponent : MonoBehaviour {
             float theMovingSpeed = theSpeedPerFrame * theMovingSign;
             Vector2 theCurrentPosition = transform.position;
             theCurrentPosition.x += theMovingSpeed;
+
             _rigidbody.MovePosition(theCurrentPosition);
         } else {
             float theTotalStairsDistance = _usingStairs.stairsVectorToPass.magnitude;

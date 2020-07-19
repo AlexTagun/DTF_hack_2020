@@ -5,16 +5,33 @@ using System.Collections.Generic;
 
 public class ChildAI : MonoBehaviour
 {
+    public bool pauseAI = false;
+
+    public void OnDrawGizmos() {
+        //Debug.DrawLine(theOriginalCurrentTargetPoint_ + new Vector3(-1f, 0f, 0f), theOriginalCurrentTargetPoint_ + new Vector3(1f, 0f, 0f), Color.green);
+        //Debug.DrawLine(theOriginalCurrentTargetPoint_ + new Vector3(0f, -1f, 0f), theOriginalCurrentTargetPoint_ + new Vector3(0f, 1f, 0f), Color.green);
+        //
+        //Debug.DrawLine(theCurrentTargetPoint_ + new Vector3(-1f, 0f, 0f), theCurrentTargetPoint_ + new Vector3(1f, 0f, 0f), Color.red);
+        //Debug.DrawLine(theCurrentTargetPoint_ + new Vector3(0f, -1f, 0f), theCurrentTargetPoint_ + new Vector3(0f, 1f, 0f), Color.red);
+    }
+
+
     public void moveToPoint(Vector2 inPoint, System.Action inOnEndCallback = null) {
         List<MovingScheduleElement> theSchedule = buildMovingScheduleToPoint(inPoint);
         executeMovingSchedule(theSchedule, inOnEndCallback);
     }
+
+    //Vector3 theOriginalCurrentTargetPoint_ = Vector3.zero;
+    //Vector3 theCurrentTargetPoint_ = Vector3.zero;
 
     private List<MovingScheduleElement> buildMovingScheduleToPoint(Vector2 inPoint) {
         List<MovingScheduleElement> theResult = new List<MovingScheduleElement>();
 
         Vector2 theCurrentPointOnFloor = getPointOnFloor(transform.position);
         Vector2 theTargetPointOnFloor = getPointOnFloor(inPoint);
+
+        //theOriginalCurrentTargetPoint_ = inPoint;
+        //theCurrentTargetPoint_ = theTargetPointOnFloor;
 
         int theIterationsGuard = 10;
         while (true) {
@@ -46,6 +63,11 @@ public class ChildAI : MonoBehaviour
         theScheduleElement.targetPoint = theTargetPointOnFloor;
         theResult.Add(theScheduleElement);
 
+        //Debug.Log("PATH REQUEST {{{");
+        //foreach (MovingScheduleElement theElement in theResult)
+        //    Debug.Log("[" + theElement.movingDirection + "|" + theElement.movingTarget + "|" + theElement.targetPoint + "|" + theElement.targetStairs + "]");
+        //Debug.Log("}}}");
+
         return theResult;
     }
 
@@ -70,6 +92,8 @@ public class ChildAI : MonoBehaviour
         };
 
         while (theSchedule.Count > 0) {
+            if (pauseAI) yield return null;
+
             MovingScheduleElement theCurrentScheduleElement = theSchedule[0];
 
             MovingDirection theActualMovingDirection = theCurrentScheduleElement.movingDirection;
@@ -106,6 +130,8 @@ public class ChildAI : MonoBehaviour
 
             yield return null;
         }
+
+        Debug.Log(">>> NEXT 1");
 
         if (null != inOnEndCallback)
             inOnEndCallback();
