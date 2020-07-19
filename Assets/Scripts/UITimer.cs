@@ -18,15 +18,9 @@ public class UITimer : MonoBehaviour {
 
     public void StartTimer(Action callback = null) {
         _callback = callback;
-        StartCoroutine(StartTimerCoroutine());
         StartCoroutine(StartTextCoroutine());
     }
 
-    private IEnumerator StartTimerCoroutine() {
-        // yield return back.DOFillAmount(0,60).SetEase(Ease.Linear).WaitForCompletion();
-        _callback?.Invoke();
-        yield return null;
-    }
 
     private IEnumerator StartTextCoroutine() {
         text.text = "60";
@@ -40,5 +34,6 @@ public class UITimer : MonoBehaviour {
             });
             if(i > 45)transform.DOShakePosition(0.5f, 20f, 20);
         }
+        _callback?.Invoke();
     }
 }

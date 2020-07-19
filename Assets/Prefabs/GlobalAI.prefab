@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5640085152321823262}
   - component: {fileID: 5640085152321823257}
   - component: {fileID: 5640085152321823261}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: GlobalAI
   m_TagString: Untagged
   m_Icon: {fileID: 0}

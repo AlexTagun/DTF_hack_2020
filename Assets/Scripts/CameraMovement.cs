@@ -23,8 +23,7 @@ public class CameraMovement : MonoBehaviour
         {
             canMove = true;
             mousePos = _camera.ScreenToWorldPoint(Input.mousePosition);
-            hit = Physics2D.Raycast(mousePos,Vector3.forward,Mathf.Infinity,~(LayerMask.GetMask("CameraBorder")));
-
+            hit = Physics2D.Raycast(mousePos,Vector3.forward,Mathf.Infinity,~(LayerMask.GetMask("CameraBorder")+ LayerMask.GetMask("Ignore Raycast")));
             if (hit.collider != null)
             {
                 if (hit.collider.tag == "Child")
