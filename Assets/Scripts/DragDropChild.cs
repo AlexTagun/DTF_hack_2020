@@ -9,6 +9,7 @@ public class DragDropChild : MonoBehaviour
     [SerializeField] private HingeJoint2D _hingeJoint;
     [SerializeField] private Animator _animator;
     //[SerializeField] private Rigidbody2D _rigidbody;
+    [SerializeField] private ChildAI _childAI = null;
     [SerializeField] private ChildEatCake _childEatCake = null;
     [SerializeField] private BirthdayСake _birthdayСake = null;
     private Camera _camera = null;
@@ -95,6 +96,7 @@ public class DragDropChild : MonoBehaviour
         {
             _childEatCake.StopEatingCake();
             _birthdayСake.IsFreeToEat = true;
+            _childAI.pauseAI = false;
         }
     }
 

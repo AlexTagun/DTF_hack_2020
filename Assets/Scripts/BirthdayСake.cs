@@ -27,6 +27,8 @@ public class BirthdayСake : MonoBehaviour
         if (collision.GetComponent<ChildEatCake>().CanEatCake)
         {
             collision.GetComponent<ChildEatCake>().EatCake();
+            collision.GetComponent<ChildAI>().pauseAI = true;
+            Debug.Log(collision.GetComponent<ChildAI>().pauseAI);
         }
 
 

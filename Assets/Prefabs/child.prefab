@@ -736,6 +736,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hingeJoint: {fileID: 5487452739450722666}
   _animator: {fileID: 2706387811624238592}
+  _childAI: {fileID: 7284831195627529540}
   _childEatCake: {fileID: 8266361141961901029}
   "_birthday\u0421ake": {fileID: 0}
 --- !u!114 &8761895476963138532
@@ -806,6 +807,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c69f91966e637c34ca03c43cd86efb97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseAI: 0
 --- !u!70 &1600912393120377310
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

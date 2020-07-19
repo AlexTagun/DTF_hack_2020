@@ -131,7 +131,7 @@ public class ChildAI : MonoBehaviour
             yield return null;
         }
 
-        Debug.Log(">>> NEXT 1");
+        //Debug.Log(">>> NEXT 1");
 
         if (null != inOnEndCallback)
             inOnEndCallback();

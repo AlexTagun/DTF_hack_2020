@@ -48,6 +48,7 @@ public class ChildEatCake : MonoBehaviour
                 Debug.Log("Кусок съеден");
                 _birthdayСake.AmountPieceCake--;
                 _birthdayСake.IsFreeToEat = true;
+                GetComponent<ChildAI>().pauseAI = false;
 
             }
             else
