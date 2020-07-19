@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -25,7 +26,7 @@ public class Stairs : MonoBehaviour {
         var endPointCollider = _endPoint.gameObject.GetComponent<BoxCollider2D>();
         _isRunning = true;
         endPointCollider.enabled = false;
-        kid.transform.position = _endPoint.position;
+        yield return kid.transform.DOMove(_endPoint.position, 2).WaitForCompletion();
         yield return new WaitForSeconds(5);
         endPointCollider.enabled = true;
         _isRunning = false;
