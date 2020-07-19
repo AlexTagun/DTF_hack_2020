@@ -821,7 +821,7 @@ MonoBehaviour:
   _childPlayerAnimation: {fileID: 6578087691765741072}
   _childAI: {fileID: 7284831195627529540}
   _childEatCake: {fileID: 8266361141961901029}
-  "_birthday\u0421ake": {fileID: 0}
+  "Birthday\u0421ake": {fileID: 0}
 --- !u!114 &8761895476963138532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -837,7 +837,6 @@ MonoBehaviour:
   speed: 200
   _rigidbody: {fileID: 5487452739450722667}
   _collider: {fileID: 1600912393120377310}
-  _groundPoint: {fileID: 0}
 --- !u!114 &8266361141961901029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -854,7 +853,7 @@ MonoBehaviour:
   CanEatCake: 1
   HaveCakeSpot: 0
   _timeEatingCake: 5
-  "_birthday\u0421ake": {fileID: 0}
+  "Birthday\u0421ake": {fileID: 0}
   _creamSpot: {fileID: 82564344156481341}
   _childPlayerAnimation: {fileID: 6578087691765741072}
   _audioSource: {fileID: 3292457918130017850}
@@ -923,7 +922,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.03, y: 0.51}
-  m_Size: {x: 0.73, y: 2.17}
+  m_Size: {x: 1.86, y: 2.17}
   m_Direction: 0
 --- !u!82 &3292457918130017850
 AudioSource:
