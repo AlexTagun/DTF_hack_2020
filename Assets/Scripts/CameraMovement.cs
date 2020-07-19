@@ -23,7 +23,8 @@ public class CameraMovement : MonoBehaviour
         {
             canMove = true;
             mousePos = _camera.ScreenToWorldPoint(Input.mousePosition);
-            hit = Physics2D.Raycast(mousePos,Vector3.forward);
+            hit = Physics2D.Raycast(mousePos,Vector3.forward,Mathf.Infinity,~(LayerMask.GetMask("CameraBorder")));
+
             if (hit.collider != null)
             {
                 if (hit.collider.tag == "Child")
@@ -32,7 +33,13 @@ public class CameraMovement : MonoBehaviour
                 }
             }
         }
-       if (Input.GetMouseButton(0))
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            canMove = false;
+        }
+
+        if (Input.GetMouseButton(0))
         {
             if(canMove)
             {
