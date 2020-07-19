@@ -675,6 +675,7 @@ GameObject:
   - component: {fileID: 8761895476963138532}
   - component: {fileID: 8266361141961901029}
   - component: {fileID: 5487452739450722666}
+  - component: {fileID: 7284831195627529540}
   m_Layer: 9
   m_Name: child
   m_TagString: Child
@@ -818,6 +819,18 @@ HingeJoint2D:
   m_AngleLimits:
     m_LowerAngle: 0
     m_UpperAngle: 359
+--- !u!114 &7284831195627529540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5487452739450722671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c69f91966e637c34ca03c43cd86efb97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6250811109368857879
 GameObject:
   m_ObjectHideFlags: 0
