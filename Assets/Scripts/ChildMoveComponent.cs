@@ -21,7 +21,7 @@ public class ChildMoveComponent : MonoBehaviour {
         if (!_usingStairs) {
             float theMovingSign = inMoveRight ? 1f : -1f;
             float theMovingSpeed = theSpeedPerFrame * theMovingSign;
-
+            transform.localScale = new Vector3(inMoveRight ? -1f : 1f, 1,1);
             Vector2 theCurrentPosition = transform.position;
             theCurrentPosition.x += theMovingSpeed;
             _rigidbody.MovePosition(theCurrentPosition);
