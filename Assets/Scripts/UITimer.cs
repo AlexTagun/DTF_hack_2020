@@ -13,7 +13,7 @@ public class UITimer : MonoBehaviour {
     private Action _callback;
 
     private void Start() {
-        StartTimer(); // TODO: remove
+        //StartTimer(); // TODO: remove
     }
 
     public void StartTimer(Action callback = null) {

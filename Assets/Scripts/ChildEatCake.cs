@@ -10,15 +10,15 @@ public class ChildEatCake : MonoBehaviour
     [SerializeField] private float _timeEatingCake = 5f;
     [SerializeField] private BirthdayСake _birthdayСake = null;
     [SerializeField] private GameObject _creamSpot = null;
+    [SerializeField] private ChildPlayerAnimation _childPlayerAnimation = null;
     private float _curTimeEatingCake = 0f;
-    // Start is called before the first frame update
+
     void Start()
     {
         _creamSpot.SetActive(false);
         _birthdayСake = GameObject.Find("birthdayСake").GetComponent<BirthdayСake>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         UpdateEatingCake();
@@ -28,7 +28,8 @@ public class ChildEatCake : MonoBehaviour
     {
         IsEatingCake = true;
         _birthdayСake.IsFreeToEat = false;
-        Debug.Log("Хрум-хрум");
+        _childPlayerAnimation.PlayAnimEat();
+        //Debug.Log("Хрум-хрум");
     }
 
     public void StopEatingCake()
@@ -43,17 +44,17 @@ public class ChildEatCake : MonoBehaviour
     {
         if(IsEatingCake)
         {
-            if(_curTimeEatingCake>=_timeEatingCake)
+            if (_curTimeEatingCake>=_timeEatingCake)
             {
                 IsEatingCake = false;
                 HaveCakeSpot = true;
-                Debug.Log("Кусок съеден");
+                //Debug.Log("Кусок съеден");
                 _birthdayСake.AmountPieceCake--;
                 _birthdayСake.IsFreeToEat = true;
                 GetComponent<ChildAI>().pauseAI = false;
                 _creamSpot.SetActive(true);
                 _birthdayСake.ChangeSprite();
-
+                _childPlayerAnimation.PlayAnimIdle();
             }
             else
             {

@@ -754,6 +754,7 @@ GameObject:
   - component: {fileID: 5487452739450722664}
   - component: {fileID: 8761895476963138532}
   - component: {fileID: 8266361141961901029}
+  - component: {fileID: 6578087691765741072}
   - component: {fileID: 5487452739450722666}
   - component: {fileID: 7284831195627529540}
   - component: {fileID: 1600912393120377310}
@@ -816,7 +817,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hingeJoint: {fileID: 5487452739450722666}
-  _animator: {fileID: 2706387811624238592}
+  _childPlayerAnimation: {fileID: 6578087691765741072}
   _childAI: {fileID: 7284831195627529540}
   _childEatCake: {fileID: 8266361141961901029}
   "_birthday\u0421ake": {fileID: 0}
@@ -853,6 +854,21 @@ MonoBehaviour:
   _timeEatingCake: 5
   "_birthday\u0421ake": {fileID: 0}
   _creamSpot: {fileID: 82564344156481341}
+  _childPlayerAnimation: {fileID: 6578087691765741072}
+--- !u!114 &6578087691765741072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5487452739450722671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 268a9aa2bc48df0488eb4467386c2d04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 2706387811624238592}
+  _childAI: {fileID: 7284831195627529540}
 --- !u!233 &5487452739450722666
 HingeJoint2D:
   m_ObjectHideFlags: 0
