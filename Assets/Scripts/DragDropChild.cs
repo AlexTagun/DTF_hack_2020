@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 public class DragDropChild : MonoBehaviour
 {
     [SerializeField] private HingeJoint2D _hingeJoint;
+    [SerializeField] private Animator _animator;
     //[SerializeField] private Rigidbody2D _rigidbody;
     [SerializeField] private ChildEatCake _childEatCake = null;
     [SerializeField] private BirthdayСake _birthdayСake = null;
@@ -40,6 +41,7 @@ public class DragDropChild : MonoBehaviour
         isDraging = true;
         _hingeJoint.enabled = true;
         gameObject.layer = 11;
+        _animator.Play("drag");
         StopEatingCake();
     }
 
@@ -48,6 +50,7 @@ public class DragDropChild : MonoBehaviour
         _isMouseDown = false;
         isDraging = false;
         _hingeJoint.enabled = false;
+        _animator.Play("run");
         gameObject.layer = 9;
     }
 

@@ -760,6 +760,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hingeJoint: {fileID: 5487452739450722666}
+  _animator: {fileID: 2706387811624238592}
   _childEatCake: {fileID: 8266361141961901029}
   "_birthday\u0421ake": {fileID: 0}
 --- !u!114 &8761895476963138532
