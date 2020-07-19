@@ -7,13 +7,18 @@ public class ChildAI : MonoBehaviour
 {
     public bool pauseAI = false;
 
+	/*
     public void OnDrawGizmos() {
-        //Debug.DrawLine(theOriginalCurrentTargetPoint_ + new Vector3(-1f, 0f, 0f), theOriginalCurrentTargetPoint_ + new Vector3(1f, 0f, 0f), Color.green);
-        //Debug.DrawLine(theOriginalCurrentTargetPoint_ + new Vector3(0f, -1f, 0f), theOriginalCurrentTargetPoint_ + new Vector3(0f, 1f, 0f), Color.green);
+        Debug.DrawLine(theLastMovingFormingStartingPlaceOnFloor_ + new Vector3(-1f, 0f, 0f), theLastMovingFormingStartingPlaceOnFloor_ + new Vector3(1f, 0f, 0f), Color.blue);
+        Debug.DrawLine(theLastMovingFormingStartingPlaceOnFloor_ + new Vector3(0f, -1f, 0f), theLastMovingFormingStartingPlaceOnFloor_ + new Vector3(0f, 1f, 0f), Color.blue);
+
+        Debug.DrawLine(theOriginalCurrentTargetPoint_ + new Vector3(-1f, 0f, 0f), theOriginalCurrentTargetPoint_ + new Vector3(1f, 0f, 0f), Color.green);
+        Debug.DrawLine(theOriginalCurrentTargetPoint_ + new Vector3(0f, -1f, 0f), theOriginalCurrentTargetPoint_ + new Vector3(0f, 1f, 0f), Color.green);
         
-        //Debug.DrawLine(theCurrentTargetPoint_ + new Vector3(-1f, 0f, 0f), theCurrentTargetPoint_ + new Vector3(1f, 0f, 0f), Color.red);
-        //Debug.DrawLine(theCurrentTargetPoint_ + new Vector3(0f, -1f, 0f), theCurrentTargetPoint_ + new Vector3(0f, 1f, 0f), Color.red);
+        Debug.DrawLine(theCurrentTargetPoint_ + new Vector3(-1f, 0f, 0f), theCurrentTargetPoint_ + new Vector3(1f, 0f, 0f), Color.red);
+        Debug.DrawLine(theCurrentTargetPoint_ + new Vector3(0f, -1f, 0f), theCurrentTargetPoint_ + new Vector3(0f, 1f, 0f), Color.red);
     }
+	*/
 
 
     public void moveToPoint(Vector2 inPoint, System.Action inOnEndCallback = null) {
@@ -21,15 +26,20 @@ public class ChildAI : MonoBehaviour
         executeMovingSchedule(theSchedule, inOnEndCallback);
     }
 
+    //Vector3 theLastMovingFormingStartingPlaceOnFloor_ = Vector3.zero;
     //Vector3 theOriginalCurrentTargetPoint_ = Vector3.zero;
     //Vector3 theCurrentTargetPoint_ = Vector3.zero;
 
     private List<MovingScheduleElement> buildMovingScheduleToPoint(Vector2 inPoint) {
         List<MovingScheduleElement> theResult = new List<MovingScheduleElement>();
 
+        //Debug.Log("~~~~~~~~~~~{{{");
         Vector2 theCurrentPointOnFloor = getPointOnFloor(transform.position);
+        //Debug.Log("~~~~~~~~~~~}}}");
+
         Vector2 theTargetPointOnFloor = getPointOnFloor(inPoint);
 
+        //theLastMovingFormingStartingPlaceOnFloor_ = theCurrentPointOnFloor;
         //theOriginalCurrentTargetPoint_ = inPoint;
         //theCurrentTargetPoint_ = theTargetPointOnFloor;
 
@@ -128,14 +138,38 @@ public class ChildAI : MonoBehaviour
                 case MovingDirection.Right:   movementComponent.moveRight();  break;
             }
 
+            if (updateShouldDropMovingScheduleForStackingWorkaround()) {
+                theSchedule.Clear();
+                break;
+            }
+
             yield return null;
         }
-
-        //Debug.Log(">>> NEXT 1");
 
         if (null != inOnEndCallback)
             inOnEndCallback();
     }
+
+    private float _stackingWorkaroundTimeOnOnePlace = 0f;
+    private Vector2 _lastFramePosition = Vector2.zero;
+
+    private bool updateShouldDropMovingScheduleForStackingWorkaround() {
+        Vector2 thePosition2D = new Vector2(transform.position.x, transform.position.y);
+        if ((_lastFramePosition - thePosition2D).magnitude < 0.001f) {
+            _stackingWorkaroundTimeOnOnePlace += Time.fixedDeltaTime;
+            if (_stackingWorkaroundTimeOnOnePlace > 1f) {
+                _stackingWorkaroundTimeOnOnePlace = 0f;
+                return true;
+            }
+        } else {
+            _stackingWorkaroundTimeOnOnePlace = 0f;
+        }
+
+        _lastFramePosition = thePosition2D;
+
+        return false;
+    }
+
 
     public enum MovingDirection { Left, Right }
     public enum MovingTarget { MoveUntilStairs, MoveUntilPoint }
@@ -171,7 +205,7 @@ public class ChildAI : MonoBehaviour
         Vector2 theCastingDistanceVector = Vector2.down * theCastingDistance;
         RaycastHit2D[] theHits = Physics2D.CircleCastAll(
             inPointOverPointOnFloor, theCastingRadius, theCastingDistanceVector);
-        Boxed<RaycastHit2D> theNearestBorderHit = getNearestHitByType<Border>(inPointOverPointOnFloor, theHits);
+        Boxed<RaycastHit2D> theNearestBorderHit = getNearestHitByType<Border>(inPointOverPointOnFloor, theHits, null, true);
         return theNearestBorderHit.value.centroid;
     }
 
@@ -188,22 +222,26 @@ public class ChildAI : MonoBehaviour
         public Boxed(Type inValue) { value = inValue; }
         public Type value;
     }
-    private Boxed<RaycastHit2D> getNearestHitByType<Type>(Vector2 inPointToFindFrom, RaycastHit2D[] inHits, System.Func<Type, bool> inAcceptingFilter = null) where Type : Component {
+    private Boxed<RaycastHit2D> getNearestHitByType<Type>(Vector2 inPointToFindFrom, RaycastHit2D[] inHits, System.Func<Type, bool> inAcceptingFilter = null, bool inUseYDistanceOnly = false) where Type : Component {
         Boxed<RaycastHit2D> theResult = null;
         float theMinimumDistance = float.MaxValue;
 
         foreach (RaycastHit2D theHit in inHits) {
+            //Debug.Log(theHit.collider.name);
+
             Type theComponent = theHit.collider.GetComponent<Type>();
             if (theComponent && (null == inAcceptingFilter || inAcceptingFilter(theComponent))) {
-                Vector2 thePosition2D = new Vector2(theComponent.transform.position.x, theComponent.transform.position.y);
-                Vector3 theDelta = inPointToFindFrom - thePosition2D;
-                float theDistance = new Vector2(theDelta.x, theDelta.y).magnitude;
+                Vector2 thePosition2D = new Vector2(!inUseYDistanceOnly ? theComponent.transform.position.x : 0f, theComponent.transform.position.y);
+                Vector2 theDelta = new Vector2(!inUseYDistanceOnly ? inPointToFindFrom.x : 0f, inPointToFindFrom.y) - thePosition2D;
+                float theDistance = theDelta.magnitude;
                 if (theDistance < theMinimumDistance) {
                     theResult = new Boxed<RaycastHit2D>(theHit);
                     theMinimumDistance = theDistance;
                 }
             }
         }
+
+        //Debug.Log("RESULT: " + theResult.value.collider.name);
 
         return theResult;
     }
