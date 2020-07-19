@@ -34,6 +34,7 @@ public class UITimer : MonoBehaviour {
             });
             if(i > 45)transform.DOShakePosition(0.5f, 20f, 20);
         }
+        yield return new WaitForSeconds(5f);
         _callback?.Invoke();
     }
 }
