@@ -6,18 +6,14 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private UITimer _UITimer;
     [SerializeField] private Pinata _pinata;
+    [SerializeField] GamePhoto _resultPhoto = null;
+    [SerializeField] ResultPhotoUIObject _resultUI = null;
 
-    // Start is called before the first frame update
     void Start()
     {
         _UITimer.StartTimer(() => {
             _pinata.ShowPinata();
+            _resultUI.show(_resultPhoto.bestPhotoTexture, _resultPhoto.bestPhotoScores);
         });
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

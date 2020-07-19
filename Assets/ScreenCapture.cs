@@ -2,7 +2,6 @@
 
 public class ScreenCapture : MonoBehaviour
 {
-    //TODO: Use coroutine
     public System.Collections.IEnumerator doCapture(Camera inCamera, System.Action<Texture2D> inResultCallback) {
         Texture2D theResultTexture = null;
 
@@ -25,31 +24,6 @@ public class ScreenCapture : MonoBehaviour
         Camera.onPostRender -= captureLambda;
 
         inResultCallback.Invoke(theResultTexture);
-    }
-
-    bool pressed = false;
-    private void Update()
-    {
-        bool theKeyIsPressed = Input.GetKey(KeyCode.A);
-        if (theKeyIsPressed) {
-            if (!pressed) {
-                StartCoroutine(
-                doCapture(_camera, (Texture2D inResultTexture) =>
-                {
-                    _image.texture = inResultTexture;
-
-                    //_result.sprite = Sprite.Create(
-                    //    inResultTexture,
-                    //    new Rect(0, 0, inResultTexture.width, inResultTexture.height),
-                    //    Vector2.zero);
-                    Debug.Log("SCREEN READY");
-                })); ;
-
-                pressed = true;
-            }
-        } else {
-            pressed = false;
-        }
     }
 
     static private RenderTexture createCaptureTexture(Camera inCamera)
@@ -99,7 +73,7 @@ public class ScreenCapture : MonoBehaviour
         return new Rect(thePosition, theSize);
     }
 
-    Rect captureZoneWorldRect {
+    public Rect captureZoneWorldRect {
         get {
             Vector2 theCenterPosition = transform.position;
             return new Rect(theCenterPosition - _size/2, _size);
@@ -107,11 +81,5 @@ public class ScreenCapture : MonoBehaviour
     }
 
     //Fields
-    [SerializeField] private Camera _camera = null;
-    [SerializeField] private SpriteRenderer _result = null;
-    [SerializeField] private UnityEngine.UI.RawImage _image = null;
-
     [SerializeField] Vector2 _size = Vector2.one;
-
-    private RenderTexture _resultTexture = null;
 }
