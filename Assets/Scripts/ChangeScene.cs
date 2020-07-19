@@ -13,6 +13,11 @@ public class ChangeScene : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
+
+    public void LoadSceneTutorial()
+    {
+        SceneManager.LoadScene("TutorialScene");
+    }
     public void Quit()
     {
         Application.Quit();

@@ -6,11 +6,9 @@ public class BirthdayСake : MonoBehaviour
 {
     public int AmountPieceCake = 5;
     public bool IsFreeToEat = true;
-    //private int _curAmountPieceCake
     // Start is called before the first frame update
     void Start()
     {
-        //_curAmountPieceCake = 
     }
 
     // Update is called once per frame
