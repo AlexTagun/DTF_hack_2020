@@ -17,11 +17,11 @@ public class ChildMoveComponent : MonoBehaviour {
 
     private void doMove(bool inMoveRight) {
         float theSpeedPerFrame = speed * Time.fixedDeltaTime;
-
+        transform.localScale = new Vector3(inMoveRight ? -1f : 1f, 1,1);
+        
         if (!_usingStairs) {
             float theMovingSign = inMoveRight ? 1f : -1f;
             float theMovingSpeed = theSpeedPerFrame * theMovingSign;
-            transform.localScale = new Vector3(inMoveRight ? -1f : 1f, 1,1);
             Vector2 theCurrentPosition = transform.position;
             theCurrentPosition.x += theMovingSpeed;
             _rigidbody.MovePosition(theCurrentPosition);
@@ -29,7 +29,6 @@ public class ChildMoveComponent : MonoBehaviour {
             float theTotalStairsDistance = _usingStairs.stairsVectorToPass.magnitude;
             float theStairsProgressChangeValue = theSpeedPerFrame / theTotalStairsDistance;
             float theStairsProgressChangeSign = (inMoveRight == _usingStairs.isRightOriented) ? 1f : -1f;
-
             float theStairsProgressChange = theStairsProgressChangeValue * theStairsProgressChangeSign;
             _stairsMovingProgress = Mathf.Clamp01(_stairsMovingProgress + theStairsProgressChange);
 
