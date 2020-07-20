@@ -9,6 +9,8 @@ using UnityEngine.UI;
 public class UITimer : MonoBehaviour {
     [SerializeField] private Image back;
     [SerializeField] private TextMeshProUGUI text;
+    [SerializeField] private Pinata _pinata;
+
 
     private Action _callback;
 
@@ -33,7 +35,9 @@ public class UITimer : MonoBehaviour {
                 transform.DOScale(1, 0.2f);
             });
             if(i > 45)transform.DOShakePosition(0.5f, 20f, 20);
+            if(i == 50) _pinata.ShowPinata();
         }
+        
         yield return new WaitForSeconds(5f);
         _callback?.Invoke();
     }

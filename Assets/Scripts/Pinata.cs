@@ -20,7 +20,7 @@ public class Pinata : MonoBehaviour
     {
         gameObject.SetActive(true);
     }
-    private void OnMouseDowm()
+    private void OnMouseDown()
     {
         Debug.Log("Клик");
         _particleSystem.Emit(20);

@@ -548,6 +548,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   back: {fileID: 1133713092}
   text: {fileID: 1298694725}
+  _pinata: {fileID: 226167581}
 --- !u!222 &389736918
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2112,7 +2113,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _UITimer: {fileID: 389736917}
-  _pinata: {fileID: 226167581}
   _resultPhoto: {fileID: 1997371652}
   _resultUI: {fileID: 740925263}
 --- !u!4 &1859340029
