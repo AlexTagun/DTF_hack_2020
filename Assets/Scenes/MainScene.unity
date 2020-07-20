@@ -1639,7 +1639,7 @@ PrefabInstance:
     - target: {fileID: 8323771127297531769, guid: e5357f2a0b52bda48a6000a69d3910c7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -22.703125
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8323771127297531769, guid: e5357f2a0b52bda48a6000a69d3910c7,
         type: 3}
@@ -1708,7 +1708,7 @@ PrefabInstance:
     - target: {fileID: 8323771127297531769, guid: e5357f2a0b52bda48a6000a69d3910c7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -22.703125
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8323771127297531769, guid: e5357f2a0b52bda48a6000a69d3910c7,
         type: 3}
@@ -2314,7 +2314,7 @@ PrefabInstance:
     - target: {fileID: 8323771127297531769, guid: e5357f2a0b52bda48a6000a69d3910c7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -22.703125
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8323771127297531769, guid: e5357f2a0b52bda48a6000a69d3910c7,
         type: 3}
@@ -2617,11 +2617,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: pinata
-      objectReference: {fileID: 0}
-    - target: {fileID: 7816276355668356593, guid: 17e47d93529d8084c819ca57526be3fa,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17e47d93529d8084c819ca57526be3fa, type: 3}
